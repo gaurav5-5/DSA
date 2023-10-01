@@ -30,6 +30,42 @@
     } while(0)                                    \
 
 
+/*
+ * ==============
+ * NODE ADD UTILS
+ * ==============
+ * sll_create(int, L)               => creates new node
+ * sll_append(L, int)            => insert at tail
+ * sll_prepend(L, int)           => insert at head
+ * sll_insert_after(L, int, int) => insert after key
+ */
+L
+sll_create(int data, L next)
+{
+    L _n = (L)malloc(sizeof(S));
+    _n->data = data;
+    _n->next = next;
+    return _n;
+}
+
+L
+sll_append(L head, int data)
+{
+    L _h = head;
+    if(!_h) _h = sll_create(data, NULL);
+    else {
+        _h = sll_get_last(_h);
+        _h->next = sll_create(data, NULL);
+    }
+    return head;
+}
+
+L
+sll_prepend(L head, int data)
+{
+    return sll_create(data, head);
+}
+
 
 /*
  * =========

@@ -9,7 +9,7 @@
 #define L sll_node*
 
 // Create
-L sll_create(int);
+L sll_create(int, L);
 
 // Insert
 L sll_append(L, int);
