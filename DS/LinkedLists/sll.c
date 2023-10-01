@@ -67,3 +67,36 @@ sll_get_first_of(L head, int key)
     // get previous node using get_prev then return its next node
     return (sll_get_prev(head, key))->next;
 }
+
+/*
+ * =============
+ * DISPLAY UTILS
+ * =============
+ * sll_display(L)     => display start to end
+ * sll_display_rev(L) => display end   to start
+ */
+// formats as :
+// START --> data1 --> data2 --> ... -> END
+void
+sll_display(L head)
+{
+    printf("\nSTART --> ");
+    while(head)
+    {
+        printf("%d --> ", head->data);
+        head = head->next;
+    }
+    printf("END\n");
+}
+
+// END <-- dataK <-- dataK-1 <-- ... <-- data1
+void
+sll_display_rev(L head)
+{
+    if(!head)
+        printf("\nEND");
+    else {
+        sll_display_rev(head->next);
+        printf(" <-- %d",head->data);
+    }
+}
