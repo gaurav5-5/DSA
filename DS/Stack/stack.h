@@ -17,14 +17,18 @@
 #ifndef _STACK_H
 #define _STACK_H 1
 
+#ifndef STACK_TYPE
+#define STACK_TYPE double
+#endif
+
 /**
  * @brief struct representing stack
  * 
  */
 typedef struct {
-    int *data;      // Pointer to the array storing the stack elements 
-    int top;        // Index of the top element in the stack 
-    int max_size;   // Maximum number of elements that can be stored in the stack 
+    STACK_TYPE *data; // Pointer to the array storing the stack elements 
+    int top;          // Index of the top element in the stack 
+    int max_size;     // Maximum number of elements that can be stored in the stack 
 } Stack;
 
 #define S Stack*
@@ -60,17 +64,17 @@ int stack_is_empty(S);
  * Adds an element to the top of the stack.
  *
  * @param S The stack to which the element is to be added.
- * @param element The element to be added to the stack.
+ * @param data The element to be added to the stack.
  */
-void push(S, int);
+void push(S, STACK_TYPE);
 
 /**
  * @brief Removes and returns the top element of the stack.
  * 
  * @param S The stack from which the element is to be removed.
- * @return int The element removed from the stack.
+ * @return STACK_TYPE The element removed from the stack.
  */
-int pop(S);
+STACK_TYPE pop(S);
 
 /**
  * Returns the top element of the stack without removing it.
@@ -78,7 +82,7 @@ int pop(S);
  * @param S stack to be peeked
  * @return top element
  */
-int peek(S);
+STACK_TYPE peek(S);
 
 // TODO destroy stack
 /**

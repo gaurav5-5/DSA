@@ -44,7 +44,7 @@ stack_create(int size)
     S s = (S)malloc(sizeof(Stack));
     s->max_size = size;
     s->top = -1;
-    s->data = (int*)malloc(sizeof(int) * size);
+    s->data = (STACK_TYPE*)malloc(sizeof(STACK_TYPE) * size);
     return s;
 }
 
@@ -80,17 +80,17 @@ stack_is_full(S s)
  * peek(S) - returns top element of stack 'S'
  */
 void
-push(S s, int data)
+push(S s, STACK_TYPE data)
 {
     if(stack_is_full(s))
     {
         printf("Stack is full!\n");
         return;
     }
-    s->data[++s->top] = data;
+    s->data[++(s->top)] = data;
 }
 
-int
+STACK_TYPE
 pop(S s)
 {
     if(stack_is_empty(s))
@@ -98,10 +98,12 @@ pop(S s)
         printf("Stack is empty!\n");
         return -1;
     }
-    return s->data[s->top--];
+    STACK_TYPE d = s->data[(s->top)];
+    s->top--;
+    return d;
 }
 
-int
+STACK_TYPE
 peek(S s)
 {
     if(stack_is_empty(s))
