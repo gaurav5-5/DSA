@@ -25,7 +25,7 @@
  */
 #define _NULL_CHECK(_SLL_HEAD, _RET_VAL) do       \
     if(!(_SLL_HEAD)) {                            \
-        printf("\nLinked List Error: NULL HEAD"); \
+        printf("\nLinked List Error: NULL NODE"); \
         return (_RET_VAL);                        \
     } while(0)                                    \
 
@@ -66,6 +66,66 @@ sll_prepend(L head, int data)
     return sll_create(data, head);
 }
 
+L
+sll_insert_after(L head, int data, int key)
+{
+    _NULL_CHECK(head, head);
+    L _t = sll_get_prev(head, key);
+    _NULL_CHECK(_t, head);
+    L _n = sll_create(data, _t->next->next);
+    _t->next->next = _n;
+    return head;
+}
+
+
+/*
+ * ============
+ * DELETE UTILS
+ * ============
+ * sll_del_head(L)      => first node
+ * sll_del_end(L)       => end node
+ * sll_del_key(L, int)  => first occurence of int
+ */
+L
+sll_del_head(L head)
+{
+    // check head
+    _NULL_CHECK(head, head);
+    // move head forward
+    L _t = head;
+    head = head->next;
+    // free memory
+    if(_t) free(_t);
+    return head;
+}
+
+L
+sll_del_end(L head)
+{
+    // check head
+    _NULL_CHECK(head, head);
+    // get end node
+    L _t = sll_get_last(head);
+    L _prev = sll_get_prev(head, _t->data);
+    // free memory
+    if(_t) free(_t);
+    _prev->next = NULL;
+
+    return head;
+}
+
+L
+sll_del_key(L head, int key)
+{
+    // check head
+    _NULL_CHECK(head, head);
+    // get key
+    L _t = sll_get_prev(head, key);
+    _NULL_CHECK(_t, head);
+    L _rm = _t->next;
+    _t->next = _rm->next;
+    if(_rm) free(_rm);
+}
 
 /*
  * =========

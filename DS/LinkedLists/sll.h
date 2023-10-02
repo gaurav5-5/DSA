@@ -19,7 +19,7 @@ L sll_prepend(L, int);
 // Delete
 L sll_del_head(L);
 L sll_del_end(L);
-L sll_del_after(L, int);
+L sll_del_key(L, int);
 
 // Get Node
 L sll_get_prev(L, int);
