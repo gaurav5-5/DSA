@@ -196,3 +196,52 @@ sll_display_rev(L head)
         printf(" <-- %d",head->data);
     }
 }
+
+/*
+ * ==========
+ * OPERATIONS
+ * ==========
+ * sll_reverse(L)  => reverse linked list
+ */
+L
+sll_reverse(L head)
+{
+    _NULL_CHECK(head, head);
+
+    L prev;
+    L next;
+
+    next = prev = NULL;
+
+    while(head) 
+    {
+        next = head->next;
+        head->next = prev;
+        prev = head;
+        head = next;
+    }
+
+    return head;
+}
+
+/*
+ * =======
+ * DESTROY
+ * =======
+ * sll_destroy(L)  => frees up memory allocated to LL
+ */
+L
+sll_destroy(L head)
+{
+    _NULL_CHECK(head, NULL);
+    L _p = head;
+    head = head->next;
+    while(head)
+    {
+        if(_p) free(_p);
+        _p = head;
+        head = head->next;
+    }
+
+    return head;
+}

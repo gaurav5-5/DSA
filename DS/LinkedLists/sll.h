@@ -32,7 +32,6 @@ void sll_display_rev(L);
 
 // Operations
 L sll_reverse(L);
-L sll_sort(L, int);
 
 // Destroy
 L sll_destroy(L);
