@@ -1,3 +1,53 @@
+/**
+ * FILEPATH: /workspaces/DSA/DS/LinkedLists/sll.c
+ * 
+ * This file contains the implementation of a singly linked list data structure.
+ * 
+ * The basic structure of the linked list is as follows:
+ * 
+ *  L  +---+  L  +---+  L
+ * --> | S | --> | S | -->
+ *     +---+     +---+
+ * 
+ * S => Struct
+ * L => Link
+ * 
+ * The following macros are defined in this file:
+ * 
+ * _NULL_CHECK(_SLL_HEAD, _RET_VAL)
+ * 
+ * The following functions are defined in this file:
+ * 
+ * sll_create(int data, L next) => creates new node
+ * sll_append(L head, int data) => insert at tail
+ * sll_prepend(L head, int data) => insert at head
+ * sll_insert_after(L head, int data, int key) => insert after key
+ * sll_del_head(L head) => delete first node
+ * sll_del_end(L head) => delete end node
+ * sll_del_key(L head, int key) => delete first occurence of int
+ * sll_get_prev(L head, int key) => node previous to first occurence of int
+ * sll_get_last(L head) => end node
+ * sll_get_first_of(L head, int key) => first occurence of int (get_prev->next)
+ * sll_display(L head) => display start to end
+ * sll_display_rev(L head) => display end to start
+ * sll_reverse(L head) => reverse linked list
+ * sll_destroy(L head) => frees up memory allocated to LL
+ * 
+ * The following typedef is defined in this file:
+ * 
+ * typedef struct sll_node {
+ *     int data;
+ *     struct sll_node* next;
+ * } sll_node;
+ * 
+ * This typedef defines the structure of a node in the linked list.
+ * Each node contains an integer data and a pointer to the next node.
+ * 
+ * The implementation of the linked list is done using the above macros and functions.
+ * The macros and functions are used to create, insert, delete, get, display, reverse and destroy nodes in the linked list.
+ * 
+ * @author gaurav5-5
+ */
 #include "sll.h"
 
 #include <stdio.h>
@@ -119,12 +169,13 @@ sll_del_key(L head, int key)
 {
     // check head
     _NULL_CHECK(head, head);
-    // get key
+    // get previous node
     L _t = sll_get_prev(head, key);
-    _NULL_CHECK(_t, head);
-    L _rm = _t->next;
-    _t->next = _rm->next;
-    if(_rm) free(_rm);
+    L _n = _t->next->next;
+    // free memory
+    if(_t->next) free(_t->next);
+    _t->next = _n;
+    return head;
 }
 
 /*
@@ -245,3 +296,6 @@ sll_destroy(L head)
 
     return head;
 }
+
+#undef L
+#undef S

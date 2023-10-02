@@ -18,7 +18,7 @@
 #define _STACK_H 1
 
 /**
- * @brief A struct representing a stack data structure.
+ * @brief struct representing stack
  * 
  */
 typedef struct {
@@ -86,7 +86,7 @@ int peek(S);
  * 
  * @param S stack to destroy
  */
-void stack_destroy(S);
+void stack_destroy(S*);
 
 #undef S
 #endif // !_STACK_H

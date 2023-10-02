@@ -1,10 +1,35 @@
-// stack.c
+/**
+ * @file stack.c
+ * @brief This file contains the implementation of a stack data structure.
+ * 
+ * Stack is implemented array style
+ * Functions:
+ * - stack_create: creates a new stack with the specified capacity.
+ * - stack_is_full: checks if the stack is full.
+ * - stack_is_empty: checks if the stack is empty.
+ * - push: adds an element to the top of the stack.
+ * - pop: removes and returns the top element of the stack.
+ * - peek: returns the top element of the stack without removing it.
+ * - stack_destroy: destroys the given stack and frees all associated memory.
+ * 
+ * @author gaurav5-5
+*/
 
 #include "stack.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/*
+ * ===============
+ * BASIC STRUCTURE
+ * ===============
+ *           <-- TOP -->               MAX_SIZE
+ *   +----+----+----+-----+-----+-----+-------+
+ *   | d1 | d2 | d3 | ... | ... | ... |  ...  |
+ *   +----+----+----+-----+-----+-----+-------+
+ */
 #define S Stack*
 
 /*
@@ -91,13 +116,14 @@ peek(S s)
  * ==============
  * STACK DELETION
  * ==============
- * stack_destroy(S) - destroys stack 'S'
+ * stack_destroy(S*) - destroys stack '*S'
  */
 void
-stack_destroy(S s)
+stack_destroy(S* s)
 {
-    if(s && s->data) free(s->data);
-    if(s) free(s);
+    free((*s)->data);
+    free(*s);
+    *s = NULL;
 }
 
 #undef S

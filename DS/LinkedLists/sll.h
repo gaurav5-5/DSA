@@ -1,3 +1,10 @@
+/**
+ * @file sll.h
+ * @brief This header file contains the function declarations for a singly linked list.
+ * 
+ * This header file defines the struct for a singly linked list node and declares functions for creating, inserting, deleting, and getting nodes, as well as displaying and reversing the list. 
+ * @author gaurav5-5
+ */
 // SLL.h
 
 #ifndef _SLL_H
