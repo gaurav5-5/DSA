@@ -46,3 +46,58 @@ stack_is_full(S s)
     return 0;
 }
 
+/**
+ * ================
+ * STACK OPERATIONS
+ * ================
+ * push(S, int) - pushes 'int' onto stack 'S'
+ * pop(S) - pops top element off stack 'S'
+ * peek(S) - returns top element of stack 'S'
+ */
+void
+push(S s, int data)
+{
+    if(stack_is_full(s))
+    {
+        printf("Stack is full!\n");
+        return;
+    }
+    s->data[++s->top] = data;
+}
+
+int
+pop(S s)
+{
+    if(stack_is_empty(s))
+    {
+        printf("Stack is empty!\n");
+        return -1;
+    }
+    return s->data[s->top--];
+}
+
+int
+peek(S s)
+{
+    if(stack_is_empty(s))
+    {
+        printf("Stack is empty!\n");
+        return -1;
+    }
+    return s->data[s->top];
+}
+
+/*
+ * ==============
+ * STACK DELETION
+ * ==============
+ * stack_destroy(S) - destroys stack 'S'
+ */
+void
+stack_destroy(S s)
+{
+    if(s && s->data) free(s->data);
+    if(s) free(s);
+}
+
+#undef S
