@@ -24,7 +24,6 @@ double
 postfix_eval(char expr[])
 {
     Stack *stk = stack_create(100);
-    printf("Type: %ld\n", sizeof(stk->data));
     int i = 0, nat = 10;
     double dec = 1.0, a, b;
     for(int j = 0; (expr[j]) != '\0'; j++) 
@@ -89,8 +88,6 @@ postfix_eval(char expr[])
     }
 
     double result = pop(stk);
-    printf("Stack size: %d\n", STACK_SIZE(stk));
-    printf("RESULT: %lf\n", result);
     stack_destroy(&stk);
     return result;
 }
