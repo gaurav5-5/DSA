@@ -17,6 +17,7 @@
 #ifndef _STACK_H
 #define _STACK_H 1
 
+// Change this for storing diferent types of values
 #ifndef STACK_TYPE
 #define STACK_TYPE double
 #endif
