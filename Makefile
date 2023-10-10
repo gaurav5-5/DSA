@@ -6,7 +6,7 @@ STACK_DIR = DS/Stack
 LL_DIR = DS/LinkedLists
 
 stack:
-	gcc -o $(TEST_DIR)/stack_test $(STACK_DIR)/stack.c $(STACK_DIR)/stack_test.c -I$(STACK_DIR)
+	gcc -o $(TEST_DIR)/stack_test $(STACK_DIR)/stack.c $(STACK_DIR)/stack_test.c $(STACK_DIR)/postfix.c -I$(STACK_DIR)
 
 
 sll:

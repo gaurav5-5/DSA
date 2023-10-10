@@ -93,5 +93,7 @@ STACK_TYPE peek(S);
  */
 void stack_destroy(S*);
 
+STACK_TYPE postfix_eval(char[]);
+
 #undef S
 #endif // !_STACK_H

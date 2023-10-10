@@ -91,21 +91,3 @@ postfix_eval(char expr[])
     stack_destroy(&stk);
     return result;
 }
-
-/**
- * @brief The main function.
- * 
- * @return int The exit status of the program.
- */
-
-int
-main()
-{
-    char expr[100];
-    printf("Enter postfix expression: ");
-    scanf("%[^\n]s", expr);
-    printf("expr: %s\n", expr);
-    double result = postfix_eval(expr);
-    printf("Result: %lf\n", result);
-    return 0;
-}
