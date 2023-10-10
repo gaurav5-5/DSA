@@ -1,0 +1,16 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers-community/features/llvm:3": {}
+  },
+  "extensions": [
+    "ms-vscode.cpptools",
+    "GitHub.copilot",
+    "aaron-bond.better-comments",
+    "mechatroner.rainbow-csv",
+    "ms-vscode.makefile-tools",
+    "emroussel.atomize-atom-one-dark-theme",
+    "file-icons.file-icons",
+    "miguelsolorio.fluent-icons"
+  ]
+}
